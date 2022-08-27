@@ -3,9 +3,9 @@ const database = require('../models/db');
 const db = database.pool;
 
 
- const getTSedes = async()=>{
+const callTSedes = async()=>{
     const table = await  db.query(`
-    select NOMBRE, DIRECCION from SEDE
+    select ID_SEDE, NOMBRE, DIRECCION from SEDE
     `).then( res => {
         return res.rows;
      }).catch( e=>{
@@ -15,9 +15,9 @@ const db = database.pool;
     return table;
 }
 
- const getSede = async(sede) =>{
+const callAforo = async(sede) =>{
     const table = await db.query(`
-    Select AFORO from SEDE where nombre = ${sede}
+    Select AFORO from SEDE where ID_SEDE = ${sede}
     `).then( res => {
         return res.rows;
      }).catch( e=>{
@@ -27,12 +27,13 @@ const db = database.pool;
     return table;
 }
 
- const getSedes = async(distrito) =>{
+const callSedeconDistrito = async(distrito) =>{
     
     const table = await db.query(`
-    Select NOMBRE, DIRECCION
-    from SEDE s left join DISTRITO d on s.ID_DISTRITO = d.id 
-    where d.NOMBRE= '${distrito}'`).then( res => {
+    Select ID_SEDE,NOMBRE, DIRECCION
+    from SEDE
+    WHERE ID_DISTRITO = ${distrito}
+    `).then( res => {
         return res.rows;
      }).catch( e=>{
         //enviar error por correo
@@ -42,7 +43,7 @@ const db = database.pool;
        
 }
 
- const cambiarAforo = async(quantity, id) =>{
+const callUpdateAforo = async(quantity, id) =>{
     const table = await db.query(`UPDATE SEDE set AFORO = ${quantity} where ID_SEDE = ${id}`).then( res => {
         return true;
         }).catch( e=>{
@@ -54,8 +55,8 @@ const db = database.pool;
 }
 
 module.exports ={
-    getSede,
-    getSedes,
-    getTSedes,
-    cambiarAforo
+    callAforo,
+    callSedeconDistrito,
+    callTSedes,
+    callUpdateAforo
 }

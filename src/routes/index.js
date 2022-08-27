@@ -7,11 +7,15 @@ const { model_getDistritoByProv , model_getTDistritos } = require("../controller
 
 const router = Router();
 
-router.get('/Sede/getAforo', getAforo);
-router.get('/Sede/getSedes', getSedes);
-router.get('/Sede/getTSedes', getTSedesController);
-router.post('/Sedes/CambiarAforo', cambiarAforo);
+router.get('/Departamento/getTDepartamentos', model_getTDepartamentos);
 
+// Provincia 
+router.get('Provincia/getProvinciaByDepa/:depa_id', model_getProvinciaByDepa); 
+router.get('Provicina/getTProvincias', model_getTProvincias); 
+
+// Distrito 
+router.get('Distrito/getDistritoByProv/:prov_id', model_getDistritoByProv); 
+router.get('Distrito/getTDistritos', model_getTDistritos); 
 
 
 module.exports= router;

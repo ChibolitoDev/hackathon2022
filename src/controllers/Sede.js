@@ -1,8 +1,9 @@
-import { getSedes, getSede, getTSedes } from './../models/Sede';
-const {response, request} = require("express")
+
+const {response, request} = require("express");
+const { getSede, getTSedes, getSedes, cambiarAforo } = require("../models/Sede");
 
 
-export const getAforo = async (req =request, res = response)=>{
+ const getAforo = async (req =request, res = response)=>{
     const {sede} = req.body;
     const respuesta = getSede(sede)
     if(respuesta == false){
@@ -11,7 +12,7 @@ export const getAforo = async (req =request, res = response)=>{
     res.status(200).json(respuesta)
 }
 
-export const getSedes = async( req =request, res= response)=>{
+ const getSedes = async( req =request, res= response)=>{
     const{distrito} = req.body;
     const respuesta =  getSedes(distrito);
     if(respuesta == false){
@@ -20,10 +21,26 @@ export const getSedes = async( req =request, res= response)=>{
     res.status(200).json(respuesta)
 }
 
-export const getTSedes = async( req =request, res= response) => {
+ const getTSedes = async( req =request, res= response) => {
     const respuesta = getTSedes();
     if(respuesta == false){
         res.status(400)
     }
     res.status(200).json(respuesta)
+}
+
+const cambiarAforo = async(req = request, res= response)=>{
+    const {quantity, id} = req.body;
+    const respuesta  = cambiarAforo(quantity,id);
+    if(respuesta == false){
+        res.status(400)
+    }
+    res.status(200)
+}
+
+module.exports ={
+    getAforo,
+    getSedes,
+    getTSedes,
+    cambiarAforo
 }

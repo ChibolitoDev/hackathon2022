@@ -6,8 +6,8 @@ const getDistritoByProv = async(provincia_id) =>{
     
     const table = await db.query(`
     Select d.NOMBRE 
-    from DISTRITO d join PROVINCIA p where d.ID_PROVINCIA = p.ID_PROVINCIA
-    where p.ID_PROVINCIA= '${provincia_id}'`).then( res => {
+    from DISTRITO d 
+    where d.ID_PROVINCIA= '${provincia_id}'`).then( res => {
         return res.rows;
      }).catch( e=>{
         //enviar error por correo

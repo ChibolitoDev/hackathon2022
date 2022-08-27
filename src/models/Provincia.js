@@ -2,16 +2,33 @@ const database = require('../models/db');
 
 const db = database.pool;
 
-export const getProvincia = async(departamento) =>{
+const getProvinciaByDepa = async(departamento_id) =>{
     
     const table = await db.query(`
-    Select NOMBRE 
-    from PROVINCIA p left join DEPARTAMENTO d where d.ID_DEPARTAMENTO = p.ID_DEPARTAMENTO
-    where d.NOMBRE= '${departamento}'`).then( res => {
+    Select p.NOMBRE 
+    from PROVINCIA p join DEPARTAMENTO d where d.ID_DEPARTAMENTO = p.ID_DEPARTAMENTO
+    where p.ID_DEPARTAMENTO= '${departamento_id}'`).then( res => {
         return res.rows;
      }).catch( e=>{
         //enviar error por correo
         return false;
     });
     return table;  
+}
+
+const getTProvincias = async()=>{
+    const table = await  db.query(`
+        select NOMBRE from PROVINCIA
+    `).then( res => {
+        return res.rows;
+     }).catch( e=>{
+        //enviar error por correo
+        return false;
+    });
+    return table;
+}
+
+module.exports = {
+    getProvinciaByDepa,
+    getTProvincias
 }

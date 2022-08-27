@@ -5,7 +5,7 @@ const pool = new Pool ({
     user: ENV.USER,
     password: ENV.PASSWORD,
     database: ENV.DATABASE,
-    port: ENV.PORT
+    port: ENV.DBPORT
 })
 
 module.exports = {pool}

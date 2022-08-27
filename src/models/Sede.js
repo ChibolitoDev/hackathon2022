@@ -7,6 +7,7 @@ const callTSedes = async()=>{
     const table = await  db.query(`
     select ID_SEDE, NOMBRE, DIRECCION from SEDE
     `).then( res => {
+        console.log(res);
         return res.rows;
      }).catch( e=>{
         //enviar error por correo

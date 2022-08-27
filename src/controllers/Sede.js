@@ -29,7 +29,7 @@ const { callAforo, callSedeconDistrito, callTSedes, callUpdateAforo } = require(
     res.status(200).json(respuesta)
 }
 
-const cambiarAforo = async(req = request, res= response)=>{
+const updateAforo = async(req = request, res= response)=>{
     const {quantity, id} = req.body;
     const respuesta  = callUpdateAforo(quantity,id);
     if(respuesta == false){
@@ -42,5 +42,5 @@ module.exports ={
     getAforo,
     getSedes,
     getTSedesController,
-    cambiarAforo
+    updateAforo
 }

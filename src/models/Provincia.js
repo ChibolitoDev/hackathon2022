@@ -28,7 +28,25 @@ const getTProvincias = async()=>{
     return table;
 }
 
+
+const getProvinciaSede = async() => {
+    const table = await  db.query(`
+    select distinct pro.* 
+    from provincia pro join ( select distinct dtr.*
+    from distrito dtr
+     left join sede on sede.id_distrito = dtr.id_distrito
+    where id_sede is not null  ) x on x.id_provincia = pro.id_provincia
+    `).then( res => {
+        return res.rows;
+     }).catch( e=>{
+        //enviar error por correo
+        return false;
+    });
+    return table;
+}
+
 module.exports = {
     getProvinciaByDepa,
-    getTProvincias
+    getTProvincias,
+    getProvinciaSede
 }

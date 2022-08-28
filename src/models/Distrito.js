@@ -5,9 +5,10 @@ const db = database.pool;
 const getDistritoByProv = async (provincia_id) => {
 
     const table = await db.query(`
-    Select d.ID_DISTRITO, d.NOMBRE 
-    from DISTRITO d 
-    where d.ID_PROVINCIA= '${provincia_id}'`).then(res => {
+    select distinct dtr.*
+    from distrito dtr
+    left join sede on sede.id_distrito = dtr.id_distrito
+    where id_sede is not null and dtr.ID_PROVINCIA= '${provincia_id}'`).then(res => {
         return res.rows;
     }).catch(e => {
         console.log(e);

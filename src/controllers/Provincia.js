@@ -1,5 +1,5 @@
 const {response, request} = require("express");
-const { getProvinciaByDepa, getTProvincias } = require("../models/Provincia");
+const { getProvinciaByDepa, getTProvincias, getProvinciaSede } = require("../models/Provincia");
 
 
  const model_getProvinciaByDepa = async (req =request, res = response)=>{
@@ -20,7 +20,16 @@ const { getProvinciaByDepa, getTProvincias } = require("../models/Provincia");
     res.status(200).json(respuesta)
 }
 
+const model_getProvinciaSede = async () =>{
+    const respuesta = await getProvinciaSede();
+    if(respuesta == false){
+        res.status(400)
+    }
+    res.status(200).json(respuesta)
+}
+
 module.exports ={
     model_getProvinciaByDepa,
-    model_getTProvincias
+    model_getTProvincias,
+    model_getProvinciaSede
 }

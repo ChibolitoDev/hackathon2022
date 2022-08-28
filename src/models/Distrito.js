@@ -2,26 +2,27 @@ const database = require('../models/db');
 
 const db = database.pool;
 
-const getDistritoByProv = async(provincia_id) =>{
-    
+const getDistritoByProv = async (provincia_id) => {
+
     const table = await db.query(`
     Select d.ID_DISTRITO, d.NOMBRE 
     from DISTRITO d 
-    where d.ID_PROVINCIA= '${provincia_id}'`).then( res => {
+    where d.ID_PROVINCIA= '${provincia_id}'`).then(res => {
         return res.rows;
-     }).catch( e=>{
+    }).catch(e => {
+        console.log(e);
         //enviar error por correo
         return false;
     });
-    return table;  
+    return table;
 }
 
-const getTDistritos = async()=>{
-    const table = await  db.query(`
+const getTDistritos = async () => {
+    const table = await db.query(`
         select ID_DISTRITO, NOMBRE from DISTRITO
-    `).then( res => {
+    `).then(res => {
         return res.rows;
-     }).catch( e=>{
+    }).catch(e => {
         //enviar error por correo
         return false;
     });

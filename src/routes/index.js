@@ -10,15 +10,15 @@ const { getAforoSalas, getSalas, getTSalas, updateAforoSala } = require("../cont
 const router = Router();
 
 //Salas
-router.get('/Salas/getAforo', getAforoSalas);
-router.get('/Salas/getSalas', getSalas);
+router.post('/Salas/getAforo', getAforoSalas);
+router.post('/Salas/getSalas', getSalas);
 router.get('/Salas/getTSalas', getTSalas);
 router.post('/Salas/updateAforo', updateAforoSala);
 
 
 //Sede
-router.get('/Sede/getAforo', getAforo);
-router.get('/Sede/getSedes', getSedes);
+router.post('/Sede/getAforo', getAforo);
+router.post('/Sede/getSedes', getSedes);
 router.get('/Sede/getTSedes', getTSedes);
 
 //Departamento
@@ -26,7 +26,7 @@ router.get('/Departamento/getLima', model_getLima);
 router.get('/Departamento/getProvincias', model_getDepartamentoProvincia);
 
 // Provincia 
-router.get('/Provincia/getProvinciaByDepa', model_getProvinciaByDepa);
+router.post('/Provincia/getProvinciaByDepa', model_getProvinciaByDepa);
 router.get('/Provicina/getTProvincias', model_getTProvincias);
 
 // Distrito 

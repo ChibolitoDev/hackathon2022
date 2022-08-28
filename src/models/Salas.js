@@ -42,10 +42,13 @@ const callSala = async(sede) =>{
 }
 
 const callUpdateAforoSala = async(quantity, id) =>{
-    const table = await db.query(`UPDATE SALA set AFORO = ${quantity} where ID_SALA = ${id} RETURNING id_sede`).then( res => {
-        const ids = res.rows[0].id_sede;
-        callUpdateAforo(ids);
-     }).catch( e=>{
+    const table = await db.query(`
+    UPDATE sede set aforo = ${quantity} 
+    where ID_SEDE = ${id};
+    `).then(() => {
+        return true;
+    }).catch(e => {
+        console.log(e);
         //enviar error por correo
         return false;
     });
@@ -56,8 +59,7 @@ const callUpdateAforoSala = async(quantity, id) =>{
 const callUpdateAforo = async (id) => {
     
     const table = await db.query(`
-    UPDATE sede set aforo =
-    (SELECT SUM(AFORO) from Sala where ID_SEDE = ${id}) 
+    UPDATE sede set aforo = ${quantity} 
     where ID_SEDE = ${id};
     `).then(() => {
         return true;

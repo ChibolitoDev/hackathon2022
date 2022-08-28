@@ -32,9 +32,9 @@ const updateAforoSala = async(req = request, res= response)=>{
     const {quantity, id} = req.body;
     const respuesta  = await callUpdateAforoSala(quantity,id);
     if(respuesta == false){
-        res.status(400);
+        res.status(400).json(respuesta);
     }
-    res.status(200);
+    res.status(200).json('correcto');
 }
 
 module.exports ={

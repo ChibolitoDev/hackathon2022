@@ -16,10 +16,11 @@ const callAforo = async (sala) =>{
 
 const callTSalas = async()=>{
     const table = await db.query(`
-    select ID_SALA, NOMBRE, AFORO, AFORO_TOTAL from SALA
+    select ID_SALA, NOMBRE, AFORO, AFORO_MAX from SALA
     `).then( res => {
-        return res.rows();
+        return res.rows;
     }).catch( e=>{
+        console.log(e)
         //enviar error por correo
         return false
     });
@@ -32,7 +33,7 @@ const callSala = async(sede) =>{
         from SALA
         where ID_SEDE = ${sede}
          `).then( res => {
-            return res.rows();
+            return res.rows;
          }).catch( e=>{
             //enviar error por correo
             return false
@@ -41,11 +42,11 @@ const callSala = async(sede) =>{
 }
 
 const callUpdateAforoSala = async(quantity, id) =>{
-    const table = await db.query(`UPDATE SALA set AFORO = ${quantity} where ID_SALA = ${id}`).then( res => {
-        return true
+    const table = await db.query(`UPDATE SALA set AFORO = ${quantity} where ID_SALA = ${id} RETURNING ID_SEDE`).then( res => {
+        return res.rows[0];
      }).catch( e=>{
         //enviar error por correo
-        return false
+        return false;
     });
     return table;
 }

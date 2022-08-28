@@ -32,11 +32,6 @@ const getTSedes = async (req = request, res = response) => {
 const updateAforo = async (req = request, res = response) => {
     const { quantity, id } = req.body;
     const respuesta = await callUpdateAforo(quantity, id);
-    // .then(data => {
-    //     console.log(data);
-    // });
-
-    // res.status(200).json({ "data": "data" })
     if(respuesta == false){
         res.status(400);
     }

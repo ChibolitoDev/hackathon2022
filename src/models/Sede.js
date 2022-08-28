@@ -18,7 +18,7 @@ const callTSedes = async () => {
 
 const callAforo = async (sede) => {
     const table = await db.query(`
-    Select AFORO, AFORO_TOTAL, DIRECCION from SEDE where ID_SEDE = ${sede}
+    Select AFORO, AFORO_MAX, DIRECCION from SEDE where ID_SEDE = ${sede}
     `).then(res => {
         return res.rows;
     }).catch(e => {
@@ -46,7 +46,7 @@ const callSedeconDistrito = async (distrito) => {
 
 const callUpdateAforo = async (quantity, id) => {
     const table = await db.query(`UPDATE sede set aforo = ${quantity} where id_sede = ${id};`).then(res => {
-        return true;
+        return res.rows;
     }).catch(e => {
         console.log(e);
         //enviar error por correo

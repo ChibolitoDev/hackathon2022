@@ -1,6 +1,6 @@
 
 const { response, request } = require("express");
-const { callAforo, callSedeconDistrito, callTSedes, callUpdateAforo } = require("../models/Sede");
+const { callAforo, callSedeconDistrito, callTSedes } = require("../models/Sede");
 
 
 const getAforo = async (req = request, res = response) => {
@@ -29,18 +29,8 @@ const getTSedes = async (req = request, res = response) => {
     res.status(200).json(respuesta);
 }
 
-const updateAforo = async (req = request, res = response) => {
-    const { quantity, id } = req.body;
-    const respuesta = await callUpdateAforo(quantity, id);
-    if(respuesta == false){
-        res.status(400);
-    }
-    res.status(200).json({"data":"data"});
-}
-
 module.exports = {
     getAforo,
     getSedes,
-    getTSedes,
-    updateAforo
+    getTSedes
 }

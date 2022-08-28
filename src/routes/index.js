@@ -1,6 +1,6 @@
 const {response, request} = require("express");
 const {Router} = require('express');
-const { getAforo, getSedes, getTSedes, updateAforo } = require("../controllers/Sede");
+const { getAforo, getSedes, getTSedes } = require("../controllers/Sede");
 const { model_getDepartamentoById, model_getTDepartamentos } = require("../controllers/Departamento"); 
 const { model_getProvinciaByDepa, model_getTProvincias }  = require("../controllers/Provincia");
 const { model_getDistritoByProv , model_getTDistritos } = require("../controllers/Distrito");  
@@ -20,8 +20,8 @@ router.post('/Salas/updateAforo', updateAforoSala);
 router.get('/Sede/getAforo', getAforo);
 router.get('/Sede/getSedes', getSedes);
 router.get('/Sede/getTSedes', getTSedes);
-router.post('/Sedes/updateAforo', updateAforo);
 
+//Departamento
 router.get('/Departamento/getTDepartamentos', model_getTDepartamentos);
 
 // Provincia 

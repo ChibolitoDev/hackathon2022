@@ -44,21 +44,10 @@ const callSedeconDistrito = async (distrito) => {
 
 }
 
-const callUpdateAforo = async (quantity, id) => {
-    const table = await db.query(`UPDATE sede set aforo = ${quantity} where id_sede = ${id};`).then(res => {
-        return res.rows;
-    }).catch(e => {
-        console.log(e);
-        //enviar error por correo
-        return false;
-    });
-    return table;
 
-}
 
 module.exports = {
     callAforo,
     callSedeconDistrito,
-    callTSedes,
-    callUpdateAforo
+    callTSedes
 }

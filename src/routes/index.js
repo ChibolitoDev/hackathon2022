@@ -28,7 +28,7 @@ router.get('/Departamento/getProvincias', model_getDepartamentoProvincia);
 // Provincia 
 router.post('/Provincia/getProvinciaByDepa', model_getProvinciaByDepa);
 router.get('/Provicina/getTProvincias', model_getTProvincias);
-router.get('/Provicina', model_getProvinciaSede);
+router.get('/Provincia', model_getProvinciaSede);
 
 // Distrito 
 router.post('/Distrito/getDistritoByProv', model_getDistritoByProv);

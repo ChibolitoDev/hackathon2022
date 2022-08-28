@@ -18,7 +18,7 @@ const callTSedes = async () => {
 
 const callAforo = async (sede) => {
     const table = await db.query(`
-    Select AFORO, AFORO_MAX, DIRECCION from SEDE where ID_SEDE = ${sede}
+    Select AFORO, AFORO_MAX, DIRECCION, LATITUD, LONGITUD, IMG, UBIHTML  from SEDE where ID_SEDE = ${sede}
     `).then(res => {
         return res.rows;
     }).catch(e => {

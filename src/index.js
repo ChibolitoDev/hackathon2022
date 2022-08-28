@@ -6,6 +6,6 @@ const port = process.env.PORT
 app.use(express.json());
 app.use(require('./routes/index'))
 
-app.listen(port,()=> {
-    console.log("escuchando...")
+app.listen(port, () => {
+    console.log("escuchando... " + port)
 });

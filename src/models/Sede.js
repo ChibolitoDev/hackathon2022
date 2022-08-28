@@ -3,45 +3,46 @@ const database = require('../models/db');
 const db = database.pool;
 
 
-const callTSedes = async()=>{
-    const table = await  db.query(`
+const callTSedes = async () => {
+    const table = await db.query(`
     select ID_SEDE, NOMBRE, DIRECCION from SEDE
     `)
     return table.rows;
 }
 
-const callAforo = async(sede) =>{
+const callAforo = async (sede) => {
     const table = await db.query(`
     Select AFORO from SEDE where ID_SEDE = ${sede}
-    `).then( res => {
+    `).then(res => {
         return res.rows;
-     }).catch( e=>{
+    }).catch(e => {
         //enviar error por correo
         return false;
     });
     return table;
 }
 
-const callSedeconDistrito = async(distrito) =>{
-    
+const callSedeconDistrito = async (distrito) => {
+
     const table = await db.query(`
     Select ID_SEDE,NOMBRE, DIRECCION
     from SEDE
     WHERE ID_DISTRITO = ${distrito}
-    `).then( res => {
+    `).then(res => {
         return res.rows;
-     }).catch( e=>{
+    }).catch(e => {
         //enviar error por correo
         return false;
     });
     return table;
-       
+
 }
 
-const callUpdateAforo = async(quantity, id) =>{
-    const table = await db.query(`UPDATE SEDE set AFORO = ${quantity} where ID_SEDE = ${id}`).then( res => {
+const callUpdateAforo = async (quantity, id) => {
+    const table = await db.query(`UPDATE sede set aforo = ${quantity} where id_sede = ${id};`).then(res => {
         return true;
-        }).catch( e=>{
+    }).catch(e => {
+        console.log(e);
         //enviar error por correo
         return false;
     });
@@ -49,7 +50,7 @@ const callUpdateAforo = async(quantity, id) =>{
 
 }
 
-module.exports ={
+module.exports = {
     callAforo,
     callSedeconDistrito,
     callTSedes,

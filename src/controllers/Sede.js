@@ -14,6 +14,7 @@ const getAforo = async (req = request, res = response) => {
 
 const getSedes = async (req = request, res = response) => {
     const { distrito } = req.body;
+    console.log(distrito)
     const respuesta = await callSedeconDistrito(distrito);
     if (respuesta == false) {
         res.status(400);

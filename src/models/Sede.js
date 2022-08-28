@@ -3,6 +3,7 @@ const database = require('../models/db');
 const db = database.pool;
 
 
+
 const callTSedes = async () => {
     const table = await db.query(`
     select ID_SEDE, NOMBRE, DIRECCION from SEDE
@@ -17,7 +18,7 @@ const callTSedes = async () => {
 
 const callAforo = async (sede) => {
     const table = await db.query(`
-    Select AFORO from SEDE where ID_SEDE = ${sede}
+    Select AFORO, AFORO_TOTAL, DIRECCION from SEDE where ID_SEDE = ${sede}
     `).then(res => {
         return res.rows;
     }).catch(e => {

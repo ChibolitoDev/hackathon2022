@@ -12,8 +12,8 @@ const getAforoSalas = async (req = request, res = response) => {
 }
 
  const getSalas = async( req =request, res= response)=>{
-    const{distrito} =  req.body;
-    const respuesta = await callSala(distrito);
+    const{sede} =  req.body;
+    const respuesta = await callSala(sede);
     if(respuesta == false){
         res.status(400);
     }

@@ -1,7 +1,15 @@
 const {response, request} = require("express");
-const {callTSalas, callSala, callUpdateAforoSala } = require("../models/Salas");
+const {callTSalas, callSala, callUpdateAforoSala, callAforo } = require("../models/Salas");
 
 
+const getAforoSalas = async (req = request, res = response) => {
+    const { sede } = req.body;
+    const respuesta = await callAforo(sede)
+    if (respuesta == false) {
+        res.status(400);
+    }
+    res.status(200).json(respuesta);
+}
 
  const getSalas = async( req =request, res= response)=>{
     const{distrito} =  req.body;
@@ -20,7 +28,7 @@ const {callTSalas, callSala, callUpdateAforoSala } = require("../models/Salas");
     res.status(200).json(respuesta);
 }
 
-const updateAforo = async(req = request, res= response)=>{
+const updateAforoSala = async(req = request, res= response)=>{
     const {quantity, id} = req.body;
     const respuesta  = await callUpdateAforoSala(quantity,id);
     if(respuesta == false){
@@ -30,7 +38,8 @@ const updateAforo = async(req = request, res= response)=>{
 }
 
 module.exports ={
+    getAforoSalas,
     getTSalas,
     getSalas,
-    updateAforo
+    updateAforoSala
 }

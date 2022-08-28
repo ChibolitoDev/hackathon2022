@@ -3,7 +3,15 @@ const database = require('../models/db');
 const db = database.pool;
 
 const callAforo = async (sala) =>{
-
+    const table = await db.query(`
+    Select AFORO from SALA where ID_SALA = ${sede}
+    `).then(res => {
+        return res.rows;
+    }).catch(e => {
+        //enviar error por correo
+        return false;
+    });
+    return table;
 }
 
 const callTSalas = async()=>{
@@ -43,6 +51,7 @@ const callUpdateAforoSala = async(quantity, id) =>{
 }
 
 module.exports ={
+    callAforo,
     callSala,
     callTSalas,
     callUpdateAforoSala

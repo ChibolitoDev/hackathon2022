@@ -4,14 +4,16 @@ const { getAforo, getSedes, getTSedes, updateAforo } = require("../controllers/S
 const { model_getDepartamentoById, model_getTDepartamentos } = require("../controllers/Departamento"); 
 const { model_getProvinciaByDepa, model_getTProvincias }  = require("../controllers/Provincia");
 const { model_getDistritoByProv , model_getTDistritos } = require("../controllers/Distrito");  
+const { getAforoSalas, getSalas, getTSalas, updateAforoSala } = require("../controllers/Salas");
+
 
 const router = Router();
 
 //Salas
-// router.get('/Sede/getAforo', getAforo);
-// router.get('/Sede/getSedes', getSedes);
-// router.get('/Sede/getTSedes', getTSedes);
-// router.post('/Sedes/updateAforo', updateAforo);
+router.get('/Salas/getAforo', getAforoSalas);
+router.get('/Salas/getSalas', getSalas);
+router.get('/Salas/getTSalas', getTSalas);
+router.post('/Salas/updateAforo', updateAforoSala);
 
 
 //Sede

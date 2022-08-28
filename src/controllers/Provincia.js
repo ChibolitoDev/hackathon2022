@@ -20,7 +20,7 @@ const { getProvinciaByDepa, getTProvincias, getProvinciaSede } = require("../mod
     res.status(200).json(respuesta)
 }
 
-const model_getProvinciaSede = async () =>{
+const model_getProvinciaSede = async (req =request, res= response) =>{
     const respuesta = await getProvinciaSede();
     if(respuesta == false){
         res.status(400)

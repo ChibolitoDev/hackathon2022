@@ -3,8 +3,8 @@ const {callTSalas, callSala, callUpdateAforoSala, callAforo } = require("../mode
 
 
 const getAforoSalas = async (req = request, res = response) => {
-    const { sede } = req.body;
-    const respuesta = await callAforo(sede)
+    const { sala } = req.body;
+    const respuesta = await callAforo(sala)
     if (respuesta == false) {
         res.status(400);
     }

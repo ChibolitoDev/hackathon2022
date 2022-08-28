@@ -31,7 +31,7 @@ const callAforo = async (sede) => {
 const callSedeconDistrito = async (distrito) => {
 
     const table = await db.query(`
-    Select ID_SEDE,NOMBRE, DIRECCION
+    Select ID_SEDE,NOMBRE, DIRECCION, AFORO
     from SEDE
     WHERE ID_DISTRITO = ${distrito}
     `).then(res => {

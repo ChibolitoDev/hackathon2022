@@ -1,7 +1,7 @@
 const {response, request} = require("express");
 const {Router} = require('express');
 const { getAforo, getSedes, getTSedes } = require("../controllers/Sede");
-const { model_getDepartamentoById, model_getTDepartamentos } = require("../controllers/Departamento"); 
+const { model_getDepartamentoProvincia, model_getLima } = require("../controllers/Departamento"); 
 const { model_getProvinciaByDepa, model_getTProvincias }  = require("../controllers/Provincia");
 const { model_getDistritoByProv , model_getTDistritos } = require("../controllers/Distrito");  
 const { getAforoSalas, getSalas, getTSalas, updateAforoSala } = require("../controllers/Salas");
@@ -22,14 +22,15 @@ router.get('/Sede/getSedes', getSedes);
 router.get('/Sede/getTSedes', getTSedes);
 
 //Departamento
-router.get('/Departamento/getTDepartamentos', model_getTDepartamentos);
+router.get('/Departamento/getLima', model_getLima);
+router.get('/Departamento/getProvincias', model_getDepartamentoProvincia);
 
 // Provincia 
-router.get('/Provincia/getProvinciaByDepa/:depa_id', model_getProvinciaByDepa); 
+router.get('/Provincia/getProvinciaByDepa', model_getProvinciaByDepa); 
 router.get('/Provicina/getTProvincias', model_getTProvincias); 
 
 // Distrito 
-router.get('/Distrito/getDistritoByProv/:prov_id', model_getDistritoByProv); 
+router.get('/Distrito/getDistritoByProv', model_getDistritoByProv); 
 router.get('/Distrito/getTDistritos', model_getTDistritos); 
 
 

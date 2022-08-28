@@ -4,7 +4,7 @@ const { getDistritoByProv, getTDistritos } = require("../models/Distrito");
 
  const model_getDistritoByProv = async (req =request, res = response)=>{
     const {prov_id} = req.body;
-    const respuesta = getDistritoByProv(prov_id)
+    const respuesta = await getDistritoByProv(prov_id)
     if(respuesta == false){
         res.status(400)
     }
@@ -13,7 +13,7 @@ const { getDistritoByProv, getTDistritos } = require("../models/Distrito");
 
 
  const model_getTDistritos = async(req =request, res= response) => {
-    const respuesta = getTDistritos();
+    const respuesta = await getTDistritos();
     if(respuesta == false){
         res.status(400)
     }

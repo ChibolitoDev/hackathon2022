@@ -5,7 +5,7 @@ const db = database.pool;
 const getProvinciaByDepa = async(departamento_id) =>{
     
     const table = await db.query(`
-    Select p.NOMBRE 
+    Select p.ID_PROVINCIA, p.NOMBRE 
     from PROVINCIA p 
     where p.ID_DEPARTAMENTO= '${departamento_id}'`).then( res => {
         return res.rows;
@@ -18,7 +18,7 @@ const getProvinciaByDepa = async(departamento_id) =>{
 
 const getTProvincias = async()=>{
     const table = await  db.query(`
-        select NOMBRE from PROVINCIA
+        select ID_PROVINCIA, NOMBRE from PROVINCIA
     `).then( res => {
         return res.rows;
      }).catch( e=>{

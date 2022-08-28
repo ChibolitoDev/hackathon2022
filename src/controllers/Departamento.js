@@ -1,11 +1,11 @@
 
 const {response, request} = require("express");
-const { getDepartamentoById, getTDepartamentos } = require("../models/Departamento");
+const { getDepartamentosProvincia, getLima } = require("../models/Departamento");
 
 
- const model_getDepartamentoById = async (req =request, res = response)=>{
+ const model_getDepartamentoProvincia = async (req =request, res = response)=>{
     const {depa} = req.body;
-    const respuesta = getDepartamentoById(depa)
+    const respuesta = await getDepartamentosProvincia(depa)
     if(respuesta == false){
         res.status(400)
     }
@@ -13,8 +13,8 @@ const { getDepartamentoById, getTDepartamentos } = require("../models/Departamen
  }
 
 
- const model_getTDepartamentos = async(req =request, res= response) => {
-    const respuesta = getTDepartamentos();
+ const model_getLima = async(req =request, res= response) => {
+    const respuesta = await getLima();
     if(respuesta == false){
         res.status(400)
     }
@@ -22,6 +22,6 @@ const { getDepartamentoById, getTDepartamentos } = require("../models/Departamen
 }
 
 module.exports ={
-    model_getDepartamentoById,
-    model_getTDepartamentos
+    model_getDepartamentoProvincia,
+    model_getLima
 }

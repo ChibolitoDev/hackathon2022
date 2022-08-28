@@ -4,7 +4,7 @@ const db = database.pool;
 
 const callAforo = async (sala) =>{
     const table = await db.query(`
-    Select NOMBRE, AFORO, AFORO_TOTAL, NROTRABAJADORES from SALA where ID_SALA = ${sala}
+    Select NOMBRE, AFORO, AFORO_MAX, NROTRABAJADORES from SALA where ID_SALA = ${sala}
     `).then(res => {
         return res.rows;
     }).catch(e => {

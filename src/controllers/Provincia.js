@@ -4,7 +4,7 @@ const { getProvinciaByDepa, getTProvincias } = require("../models/Provincia");
 
  const model_getProvinciaByDepa = async (req =request, res = response)=>{
     const {depa_id} = req.body;
-    const respuesta = getProvinciaById(depa_id)
+    const respuesta = await getProvinciaByDepa(depa_id)
     if(respuesta == false){
         res.status(400)
     }
@@ -13,7 +13,7 @@ const { getProvinciaByDepa, getTProvincias } = require("../models/Provincia");
 
 
  const model_getTProvincias = async(req =request, res= response) => {
-    const respuesta = getTProvincias();
+    const respuesta = await getTProvincias();
     if(respuesta == false){
         res.status(400)
     }

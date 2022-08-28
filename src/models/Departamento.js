@@ -2,9 +2,9 @@ const database = require('../models/db');
 
 const db = database.pool;
 
-const getDepartamentoById = async() =>{   
+const getDepartamentosProvincia = async() =>{   
     const table = await db.query(`
-    Select NOMBRE 
+    Select ID_DEPARTAMENTO, NOMBRE 
     from DEPARTAMENTO 
     where NOMBRE != 'Lima'`).then( res => {
         return res.rows;
@@ -15,12 +15,13 @@ const getDepartamentoById = async() =>{
     return table;  
 }
 
-const getTDepartamentos = async()=>{
+const getLima = async()=>{
     const table = await  db.query(`
-        select NOMBRE from DEPARTAMENTO
+        select ID_DEPARTAMENTO, NOMBRE from DEPARTAMENTO where NOMBRE = 'Lima'
     `).then( res => {
         return res.rows;
      }).catch( e=>{
+
         //enviar error por correo
         return false;
     });
@@ -28,8 +29,8 @@ const getTDepartamentos = async()=>{
 }
 
 module.exports = { 
-    getDepartamentoById,
-    getTDepartamentos
+    getDepartamentosProvincia,
+    getLima
 
 }
 

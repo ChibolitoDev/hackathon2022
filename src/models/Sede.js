@@ -6,8 +6,13 @@ const db = database.pool;
 const callTSedes = async () => {
     const table = await db.query(`
     select ID_SEDE, NOMBRE, DIRECCION from SEDE
-    `)
-    return table.rows;
+    `).then(res => {
+        return res.rows;
+    }).catch(e => {
+        //enviar error por correo
+        return false;
+    });
+    return table;
 }
 
 const callAforo = async (sede) => {

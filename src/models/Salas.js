@@ -2,6 +2,10 @@ const database = require('../models/db');
 
 const db = database.pool;
 
+const callAforo = async (sala) =>{
+
+}
+
 const callTSalas = async()=>{
     const table = await db.query(`
     select ID_SALA, SEDE, AFORO, from SALA

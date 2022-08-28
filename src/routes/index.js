@@ -15,12 +15,12 @@ router.post('/Sedes/updateAforo', updateAforo);
 router.get('/Departamento/getTDepartamentos', model_getTDepartamentos);
 
 // Provincia 
-router.get('Provincia/getProvinciaByDepa/:depa_id', model_getProvinciaByDepa); 
-router.get('Provicina/getTProvincias', model_getTProvincias); 
+router.get('/Provincia/getProvinciaByDepa/:depa_id', model_getProvinciaByDepa); 
+router.get('/Provicina/getTProvincias', model_getTProvincias); 
 
 // Distrito 
-router.get('Distrito/getDistritoByProv/:prov_id', model_getDistritoByProv); 
-router.get('Distrito/getTDistritos', model_getTDistritos); 
+router.get('/Distrito/getDistritoByProv/:prov_id', model_getDistritoByProv); 
+router.get('/Distrito/getTDistritos', model_getTDistritos); 
 
 
 
